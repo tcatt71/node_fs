@@ -1,1 +1,10 @@
-{"data":[{"fname":"Ben","lname":"Bryant","email":"ben@email.com","phone":"123-456-7890"}]}
+{
+  "data": [
+    {
+      "fname": "Ben",
+      "lname": "Bryant",
+      "email": "ben@email.com",
+      "phone": "123-456-7890"
+    }
+  ]
+}
