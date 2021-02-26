@@ -3,12 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Node File System</title>
+    <title>Sign Up For More Burlywood</title>
   </head>
   <body>
-    <h1>Node FS Module!</h1>
-    <p>Here, I am practicing using the node fs module.</p>
+    <form>
+      <p></p>
+      <label for="name">Name:</label>
+      <input type="text" placeholder="Jane Doe" />
+      <label for="email">Email:</label>
+      <input type="email" placeholder="bambi23@forestry.com" />
+      <button type="submit">Signup</button>
+    </form>
+    <script>
+      let form = document.querySelector("form");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const body = JSON.stringify({
+          name: form.children[2].value,
+          email: form.children[4].value,
+        });
+        fetch("http://localhost:3000/newsletter_signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body,
+        }).then((res) => {
+          if (res.ok) {
+            form.children[2].value = "";
+            form.children[4].value = "";
+            form.children[0].textContent = "Thanks for signing up!";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
-
-
