@@ -37,7 +37,7 @@ http
           );
           response.end();
         } else if (url === "/newsletter_signup" && method === "GET") {
-          readFile("index.html", (err, data) => {
+          readFile(path.join(__dirname, "index.html"), (err, data) => {
             if (err) {
               console.log(err);
               response.writeHead(500, { "Content-Type": "text/html" });

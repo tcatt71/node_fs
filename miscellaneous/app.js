@@ -1,9 +1,8 @@
-const { appendFile } = require("fs");
-const path = require("path");
-const http = require("http");
+import { appendFile } from "fs";
+import { join } from "path";
+import { createServer } from "http";
 
-http
-  .createServer((request, response) => {
+createServer((request, response) => {
     const { method, url } = request;
 
     const chunks = [];
@@ -26,7 +25,7 @@ http
           response.end("An error occurred on the server :(");
         });
 
-        appendFile(path.join(__dirname, "/src/contacts.txt"), body, (err) => {
+        appendFile(join(__dirname, "/src/contacts.txt"), body, (err) => {
           if (err) throw err;
           console.log("The file has been saved!");
         });
