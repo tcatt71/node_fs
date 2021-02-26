@@ -1,6 +1,9 @@
 const { appendFile, readFile } = require("fs");
+const { EventEmitter } = require("events");
 const path = require("path");
 const http = require("http");
+
+const NewsLetter = new EventEmitter();
 
 http
   .createServer((request, response) => {
@@ -26,14 +29,7 @@ http
 
           const newContact = `${body.name},${body.email}\n`;
 
-          appendFile(
-            path.join(__dirname, "newsletter.csv"),
-            newContact,
-            (err) => {
-              if (err) throw err;
-              console.log("The file has been updated!");
-            }
-          );
+          NewsLetter.emit("signup", newContact);
 
           response.writeHead(200, { "Content-Type": "application/json" });
           response.write(
@@ -58,3 +54,10 @@ http
       });
   })
   .listen(3000, () => console.log("Server listening on port 3000..."));
+
+NewsLetter.on("signup", (newContact) => {
+  appendFile(path.join(__dirname, "newsletter.csv"), newContact, (err) => {
+    if (err) throw err;
+    console.log("The file has been updated!");
+  });
+});
