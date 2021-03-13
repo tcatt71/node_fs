@@ -1,3 +1,0 @@
-GET -- / -- 200 -- Fri Feb 26 2021 14:07:55 GMT-0600 (Central Standard Time)
-GET -- /about -- 200 -- Fri Feb 26 2021 14:08:05 GMT-0600 (Central Standard Time)
-GET -- /not -- 404 -- Fri Feb 26 2021 14:08:10 GMT-0600 (Central Standard Time)
