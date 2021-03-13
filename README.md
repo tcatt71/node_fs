@@ -1,4 +1,4 @@
-# Node.js HTTP Exercise
+# Node.js File System Exercise
 
 ## Getting Started
 
